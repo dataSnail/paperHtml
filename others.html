@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <title>其他</title>
+   <script src="./jquery/jQuery-2.1.4.min.js"></script>
+   <script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+   <link href="./plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="./css/style.css"  rel="stylesheet">
+</head>
+<body>
+	<div class="panel-group" id="accordion">
+	<!-- 其他想法 -->
+	   <div class="panel panel-info">
+	      <div class="panel-heading">
+	         <h4 class="panel-title">
+	            <a data-toggle="collapse" data-parent="#accordion" 
+	               href="#others">
+	               <span class = "papername">想法整理</span>
+	            </a>
+	         </h4>
+	      </div>
+	      <div id="others" class="panel-collapse collapse in">
+	         <div class="panel-body">
+	            <h4><b>关于群体与个体定义的想法：</b></h4>
+	            <p>
+	               群组与个体的定义：<br>
+	               <h5>群体定义：</h5>
+	               <ol>
+	               		<li>
+	               			社区发现？还是定义参与某个动作的一群人？
+	               		</li>
+	               </ol>
+	               <h5>个体定义：</h5>
+	               <ol>
+	               		<li>
+	               			一个单独的节点。
+	               		</li>
+	               </ol>
+	            </p>
+	            <h4><b>关于群体与个体的描述想法：</b></h4>
+	            <p>
+	               群组与个体的描述：<br>
+	               <h5>群体描述：</h5>
+	               <ol>
+	                  <li>
+	                     网络的性质：
+	                     <ul>
+	                     	<li>节点数`Node_{cluster}`</li>
+	                     	<li>边数`Edg e_{cluster}`</li>
+	                     	<li>群聚类系数`C_{cluster}`(形容群体的凝聚力)</li>
+	                     	<li>群体影响力`Influence_{cluster}=\alpha*Node_{cluster}+β*Edg e_{cluster}+\cdots`</li>
+	                     </ul>
+	                  </li>
+	                  <li>
+	                     语义：（群组里的所有人发布的微博）
+	                     <ul>
+	                     	<li>语义分词，提取主题(`Theme_{cluster}=\[wo rd_1,wo rd_2,\cdots,wo rd_n\]`)</li>
+	                     </ul>
+	                  </li>
+	               </ol>
+	               <h5>个体描述：</h5>
+	               <ol>
+	               	<li>
+	               		网络性质：
+	               		<ul>
+	               			<li>关注数`i_{followeeNum}`（接受信息的渠道数量）</li>
+							<li>粉丝数`i_{followerNum}`（传播信息的渠道，贡献部分接受信息渠道（粉丝可能@））</li>
+							<li>个体聚类系数`i_C`</li>
+							<li>个体的活跃度</li>
+	               		</ul>
+	               	</li>
+	               	<li>
+	               		语义：
+	               		<ul>
+	               			<li>微博的转发量</li>
+	               			<li>微博传播生命周期</li>
+	               			<li>微博</li>
+	               		</ul>
+	               	</li>
+	               </ol>
+	            </p>
+	            <h4><b>关于群体个体之间关系的想法：</b></h4>
+	            <p>
+	               群组与个体之间的关系的描述：
+	               <ol>
+	                  <li>
+	                     群体描述
+	                  </li>
+	               </ol>
+	            </p>
+
+	            <p>
+	            <h4><b>20160121</b></h4>
+	            		图的构建：借鉴一篇论文的思想：用户和用户的好友关系+用户之间的转发关系（全部有向）。<br>
+					群体发现，先按照最普通的（模块度可以），发现。按时间切片，发现用户在一些时刻属于和不属于的群组。（问题：怎么判断时间先后是一个群组，群组的演化方面）【每一个成员都可以同属于多个群体,这些群体在大小、持续时间、价值、目标等方面也都不一定相同】<br>
+					群体：规定三个方面(自身性质、主题分布（LDA）、行为（转发行为）) <br>
+					群体的可见性：一个人平时转的微博所关联的人数，占总群体的百分比，是这个人对这个群体的感知大小。<br>
+					群体：活跃度、凝聚力、角色、领导。<br>
+					领导：（可以从打破群体的能力来讲，比如去掉这个用户，使得群体丢失多少比例的边，在粉丝群特别容易发现）（可以从主体一致性，<br>
+					黏性：一个用户经常转发的用户分布（好友、陌生人比例，随时间变化分布）<br>
+					行为定义：新浪微博为例：收藏转发评论点赞。<br>
+					活跃性：单位时间内平均的行为数量。<br>
+					影响因素：好友转发的时间在此用户之前，认为是影响他转发微博的因素。<br>
+
+					封闭性：群内成员转群内成员的微博数，占转微博的总数。<br>
+					凝聚力：<br>
+
+					利用群体属性和个体属性的相关性来衡量群体对个体的影响<br>
+					衡量群体对个体影响：`\[\alpha*A+\beta*B+\cdots+地位纠正值\]`<br>
+					也可以简单的算群体内每个个体对目标个体的影响总和。（如何证明这种方法不好，因为有潜在的影响，上一个方法中我们用地位的纠正值来纠正这个影响）<br>
+					Community Level Diffusion Extraction 只是利用了LDA思想，计算了群组在主题的分布，没有计算在主题活跃程度。<br>
+					在Understanding Community Effects on Information Diffusion中，作者说明了在一个群体中用户所表现出来的受影响的相似度要比影响别人的相似度和行动的相似度要高很多，但是各个变量的衡量标准不一样，并不能绝对的表明高，但是从受影响和影响别人的相似度的角度来衡量，说明用户在群体中扮演的角色是不同的，可能是影响别人的人，也可能是受别人影响的人。结合另一种角度来描述这种特点，我们描述一个个体在群体中的地位，不同的用户在群体中的地位肯定是不一样的，所以不同地位对群体的贡献影响也是不一样的。
+					事实：
+					<li>好友要比非好友互动的机会大。要证明好友关系决定评论关系，即好友关系比评论关系重要。所以我们建立图的时候虽然，好友的关系和评论的关系放到一个图里，但是区别对待两条关系。怎么区别对待，通过数据分析。</li>
+					<li>用户愿不愿意发微博，跟他的粉丝数有关系！</li>
+					<li>如何衡量一个群体对用户的模糊影响，而不是简单的所有好友的总和？</li>
+
+	            </p>
+	         </div>
+	      </div>
+	   </div>
+	</div>
+</body>
+</html>

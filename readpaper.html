@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <title>论文整理</title>
+   <script src="./jquery/jQuery-2.1.4.min.js"></script>
+   <script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+   <link href="./plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="./plugins/bootstrap/css/_all-skins.min.css" rel="stylesheet">
+   <link href="./plugins/bootstrap/css/AdminLTE.min.css" rel="stylesheet">
+   <link href="./css/style.css"  rel="stylesheet">
+</head>
+
+<body class="skin-blue layout-top-nav">
+   <div class="wrapper">
+   <header class="main-header">
+      <nav class="navbar navbar-static-top">
+         <div class="container">
+            
+         </div>
+      </nav>
+   </header>
+   <div class="content-wrapper">
+   <div class="container">
+   <section class="content">
+      <div class="panel-group" id="accordion">
+
+      <!-- 论文 [1] Understanding Community Effects on Information Diffusion -->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper1">
+                     <span class = "papername">[1] Understanding Community Effects on Information Diffusion</span> [M] Lin S, Hu Q, Wang G, et al. PAKDD 2015
+                     <a target="_blank" href="./papers/PAKDD15_Understanding Community Effects on information diffusion.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper1" class="panel-collapse collapse">
+               <div class="panel-body">
+                  
+                  <h4><b>介绍：</b></h4>
+                  <p>
+                  一些问题，如果从社区的角度去解决，可能会带来新的idea，比如说影响最大化问题，这个问题已经被证明是NP-hard问题，通过考虑信息传播中社区的作用，我们可以
+                  很容易提出一些启发式的算法来解决这个问题。比如，我们可以利用网络中社区的趋同性，来快速的衡量用户的影响力。我们也可以从不同的社区中选择种子用户，最小化重叠区域，以达到影响力最大化的目标.</p> 
+                  <p>首先观察社区中行为的趋同性，然后介绍基于角色的(影响者和被影响者)社区趋同性。<br>
+                     发现用户作为被影响者，所展现出来的属性最明显（计算方式的不同，显然会导致差别），所以作者决定用用户作为influencee的角色来进行衡量和判断。<br>
+                     通过上述的发现，作者提出了一个CFI（community based Fast Influence）模型。
+                  </p>
+
+                  <h4><b>三点贡献：</b></h4>
+                  <p>
+                  	<ol>
+      	            	<li>量化分析数据，探究了社区在信息传播的作用。</li>
+      	            	<li>在量化社区作用的过程中，得到了有价值的发现。引进了一个基于角色的社区趋同性的概念</li>
+      	            	<li>把上述的发现，应用在影响最大化上，提出了CFI模型，基于这个模型，提出了一个有效近似的影响最大化算法。</li>
+                  	</ol>
+                  </p>
+
+                  <h4><b>疑问：</b></h4>
+                  <p>
+                  	<ol>
+      	            	<li>为什么把节点到节点的影响作用，转化到节点到社区的影响上了？是假设么？P88</li>
+      	            	<li>两个人之间的影响S<sub>ij</sub>具体是怎么计算的？（`s_{ij}=\|\{O_k\inO|v_i,v_j\inV(O_k)\wedget_i^{O_k}\let_j^{O_k}\}\|`）</li>
+      	            	<li>Direct out-neighbor是什么意思？</li>
+                        <li>为什么叫CFI呢？1、因为从community的粒度进行衡量的。2、由于文章不再单独计算用户对周围用户的影响力，而是直接计算用户对一个community的影响力的，所以速度比原来的单个影响要快。</li>
+                  	</ol>
+                  </p>
+
+                  <h4><b>缺陷：</b></h4>
+                  <p>
+                  	<ol>
+                  		<li>假设了社区的不重叠。</li>
+                  	</ol>
+                  </p>
+
+                  <h4><b>其他：</b></h4>
+                  <p>
+                  <ol>
+                  	<li>
+      	            	<h5>怎么讲5.2中的相似度是定义在用户作为influencee的角度上的？</h5>
+      	            	对于每一个簇C，都会定义用户V<sub>j</sub>对C中所有的用户的影响力，此时C中所有用户都是作为一个influencee的角色上进行计算的，最后计算C的特征是一个分别计算C中所有用户被影响的值作为一个向量`q_C=[q_{1→C},\cdots,q_{n→C}]`,然后再利用余弦相似性，计算两个簇的相似程度`sim(C_1,C_2)`。
+                  	</li>
+                  </ol>
+                  </p>
+               </div>
+            </div>
+         </div>
+
+      <!-- 论文 [2] Information Cascade at Group Scale-->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper2">
+                     <span class = "papername">[2] Information Cascade at Group Scale</span> [C] Eftekhar M, Ganjali Y, Koudas N. ACM SIGKDD 2013 
+                     <a target="_blank" href="./papers/KDD13_Information Cascade at Group Scale.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper2" class="panel-collapse collapse">
+               <div class="panel-body">
+               	<h4><b>摘要：</b></h4>
+                  <p>
+                  	在网络中，确定K个最有影响力的K个个体是得到充分研究的问题。在现实生活中，有时候我们需要(煽动）instigate一些组，而不是个体，来出发网络中的传播。比如电子公告、电视广告和报纸广告，这些都是利用大量的人来使得流行度爆发或者提高知名度。
+                     本文中，一般化“influence node”问题。发现“influence groups”。<br>首先，文章中为了解决这个问题：
+                     <ol>
+                        <li>
+                           提出了一个基于组问题的信息传播的细粒度模型(fine-gained model)。
+                        </li> 
+                        <li>
+                           表明传播过程是具有子模特性的，接着在这个模型下面提出了确定有影响力组的算法。
+                        </li>
+                        <li>
+                           提出了一个粗粒度的模型(coarse-grained)，在组的层次上来看(inspect)整个网络,对于大规模的网络，很大程度上提高了计算速度。
+                        </li> 
+                        <li>
+                           发现我们设计的传播函数，在一般情况下是具有子模特性的，基于粗粒度的模型，提出了一个近似算法，最后在真实数据上做了个实验。
+                        </li>
+                        <li>
+                           证明我们选定的组中首次接受的种子用户，能传播的更广。
+                        </li>
+                     </ol>
+                     更多的是，本文可以更快的确定这些具有影响力的组。
+                  </p>
+
+                  <h4><b>贡献：</b></h4>
+                  <p>
+                  	
+                  </p>
+
+                  <h4><b>牵扯到的一些关键点：</b></h4>
+                  <p>
+                  	<ol>
+                  		<li>
+                  			提到了一个细粒度和一个粗粒度的方法。
+                  		</li>	
+                  		<li>
+                  			粗粒度是以组层次来考虑，组与组之间的影响是累计群组之间用户之间的影响力。（group A和B之间的边的权重计算公式：
+                           `w_(AB)=\frac{\sum_{i\inA-B,j\inB-A}w_{ij}+N_{A\bigcapB}}{N_B}`）
+                  		</li>
+                        <li>
+                           交流和人际交往关系在创新点的传播上是两个主要的影响因素。
+                        </li>
+                  	</ol>
+                  </p>
+
+                  <h4><b>缺陷：</b></h4>
+                  <p>
+                  	<ol>
+      	            	<li>
+      	            		论文中没有说清楚，初始的群组是怎么划分的，定义问题的时候，直接说了给定一个社交网络和输入群组的集合。
+      	            	</li>
+      	            	<li>
+      	            		在群组的经济效益上，没有进一步考虑种子节点的影响力，$100选定的种子节点的用户，和$100选定400个种子节点的用户，这两者个体上的传播力是完全不同的。
+      	            	</li>
+      	            	<li>
+      	            		群组之间的影响力，是按照“总体是个体的累和”这种方式为计算标准的。
+      	            	</li>
+                  	</ol>
+                  </p>
+
+               </div>
+            </div>
+         </div>
+
+      <!-- 论文 [3] Community Level Diffusion Extraction -->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper3">
+                     <span class = "papername">[3] Community Level Diffusion Extraction</span> [C] Hu Z, Yao J, Cui B, et al. ACM SIGMOD 2015 
+                     <a target="_blank" href="./papers/SIGMOD15_Community Level Diffusion Extraction.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper3" class="panel-collapse collapse">
+               <div class="panel-body">
+                  <h4><b>摘要：</b></h4>
+                  <p>
+                     社交网络中，在线内容是怎么传播的呢？每天有上亿的用户产生、消费、传播海量的信息。这些空前规模的动态在反应我们时代的精神是很有价值的。然而，大多数现有的传播提取工作只是触及到了单个用户的层次，不能获得综合的线索。<br>
+                     这篇文章介绍了一个新的方法，比如说，COmmunity Level Diffusion（COLD），来揭示和探索了这个时空的扩散（temporal diffusion）。<br>
+                     提取的社区层次的模式，能够从一个新的角度来探索传播。我们利用这种紧凑而健壮的表示，来开发一个新的预测和分析应用。我们也发现了，社区依据他的兴趣，在传播过程中起着完全不同于个体的作用。
+                  </p>
+               </div>
+            </div>
+         </div>
+
+      <!-- 论文 [4] Discovering Patterns of Advertisement Propagation in  Sina-Microblog -->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper4">
+                     <span class = "papername">[4] Discovering Patterns of Advertisement Propagation in Sina-Microblog</span> [C] Yin Z, Zhang Y, Chen W, et al. ACM, 2012 
+                     <a target="_blank" href="./papers/Discovering Patterns of Advertisement Propagation in.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper4" class="panel-collapse collapse">
+               <div class="panel-body">
+                  <h4><b>文章中要解决的三个问题：</b></h4>
+                  <ol>
+                     <li>
+                        广泛传播的模式是什么？(聚类得到的八种传播模式)
+                     </li>
+                     <li>
+                        名人效应作用？(在广告传播中，并不是想象的那么有用)
+                     </li>
+                     <li>
+                        什么类型的广告更吸引用户？(sales promotion 形式的广告更加好一点)
+                     </li>
+                  </ol>
+                  <h4><b>主要思想：</b></h4>
+                  <p>
+                     从信息传播的角度，利用传播树，对于每一条信息建立一颗传播树，然后用33个特征去衡量这棵传播树，通过皮尔逊相关系数分析33个特征之间的关系，最后确定9个特征来描述一个树。接着，用K-means的方法聚类，得到八种传播模式。<br>
+                     文章中，手工标记了每条信息的类型（News、Advertisement（product）、Advertisement（celebrity）、Advertisement（sales promotion）、Knowledge、Others），然后看每一种信息在八种传播模式上的分布，可以确定，每类信息遵循哪几种传播模式。<br>
+                     文章中，得出来怎么样衡量一个信息传播的好还是不好，提出了四个量来衡量，然后通过皮尔逊相关系数，得到三个相关性不是很大的量，最终来衡量传播的结果。然后，用这几个量去衡量，三种广告的传播好坏，得出来，在微博这种环境下，Advertisement（sales promotion）是广告的最好形式。
+                  </p>
+               </div>
+            </div>
+         </div>
+
+      <!-- 论文 [5] Discovering Information Propagation Patterns in Microblogging Services -->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper5">
+                     <span class = "papername">[5] Discovering Information Propagation Patterns in Microblogging Services</span> [J] Yu, Zhiwen, et al. TKDD, 2015
+                     <a target="_blank" href="./papers/Discovering Information Propagation Patterns in Microblogging Services.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper5" class="panel-collapse collapse">
+               <div class="panel-body">
+                  <h4><b>主要贡献：</b></h4>
+                  <ol>
+                     <li>
+                        提出了一个基于树的模型来表示每条信息的传播过程。
+                     </li>
+                     <li>
+                        层次性的聚类方法，被应用到宏观角度中，组传播树和揭示传播模式中。
+                     </li>
+                     <li>
+                        基于树的频繁项挖掘。
+                     </li> 
+                  </ol>
+               </div>
+            </div>
+         </div>
+
+
+      <!-- 论文 [6] A social recommender mechanism ofr location-based group commerce -->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper6">
+                     <span class = "papername">[6] A social recommender mechanism of location-based group commerce</span> [J] Li Y M, Chou C L, Lin L F. Elsevier 2014
+                     <a target="_blank" href="./papers/A social recommender mechanism for location-based group commerce.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper6" class="panel-collapse collapse">
+               <div class="panel-body">
+                  <h4><b>摘要：</b></h4>
+                  <p>
+                     团购的优点：
+                     <ol>
+                        <li>价格折扣</li>
+                        <li>体验值(experience value):可能有别人体验过感受优势。</li>
+                     </ol>
+                     基于以上的优点，和现在移动设备的流行给本地的商店获得公众度提供了更多的商业机会。<br>
+                     所以，本文中考虑用户偏好、方便的地理位置信息、朋友的影响力，为了更好的推广位置敏感的产品，提出了团购券推荐系统。并在Facebook上还实践，可以精准的推荐产品，并且在社交网络的影响下，增加了用户购买的欲望。
+                  </p>
+                  <h4><b>为什么要做这个团购券推荐系统？</b></h4>
+                  <p>
+                     传统的电子商务的操作模式：贸易商（trader）展示他们的商品在高质量的拍卖网站上（e-Bay、Yahoo）来吸引用户购买。而最近，利用价格上的优势和社交影响，一种新型的团购商业（group commerce）出现了。
+                     <br>
+                     越来越多的团购网站出现，像groupon、gomaji、meituan。对于这些平台他们面对的主要问题如下：
+                     <ol>
+                        <li>
+                           如何给团购消费者提供个性化的增值服务。
+                        </li>
+                        <li>
+                           如何精准的给消费者推荐位置敏感的团购券。
+                        </li>
+                        <li>
+                           如何利用社交影响力的力量，来增加团购网站的收入。
+                        </li>
+                     </ol>
+                  </p>
+                  <p>
+                     本文研究一个团购优惠券的推荐机制，通过分析个体喜好、位置敏感度、社交影响力等因素，通过找到一组对此产品感情兴趣，对提供产品的shop地理位置相近的一群消费者，满足最小的消费数量（人数），来保证最终这个团购事务（group-buying transaction）的成功性。 
+                  </p>
+
+                  <h4><b>文章中涉及到的关于群组推荐和社会学理论的已有相关工作：</b></h4>
+                  <p>
+                     群组推荐：
+                     <ul>
+                        <li>推荐系统可以分为三类：1、基于内容的推荐系统；2、基于协同过滤的推荐系统；3、混合的推荐系统；</li>
+                        <li>近来，模糊语言的推荐[42],采用多标准评级[20]，提供群组推荐[37],大部分推荐系统都是针对于个人提出个性化的推荐建议。但是有一些情况，item是给一组人提供的而不是一个人。这种只考虑到了某些人的喜好等因素，忽略的群组内其他人的喜好。</li>
+                        <li>[21]提出了一个新群组推荐机制，致力于提高群组的推荐质量而不是一个单独成员的满意度。</li>
+                        <li>[10]提出了新的群组推荐机制，结合了协同过滤和基因算法来学习群组之间可能的相互关系，来估测这群人可能给这个item的评级（rating）。</li>
+                        <li>一般来说，消费者会选择几个有相同兴趣的伙伴，讨论考虑要买的产品。（ps：受影响）由于社交影响，社交网络是一个很好的方式来影响个体买者的行为[13]。一个人想买，他找到也想买的人一起，会更想买。</li>
+                        <li>  在本文的研究中，提出一个群组（group-formed）的推荐机制，对于目标消费者，提供一个消费者陪同列表，利用社交影响的力量来增加购买位置敏感的团购券的意愿。（是不是就是，有多少人购买了此xxx产品，这种告示）</li>
+                     </ul>
+                     社会学理论：
+                     <ul>
+                        <li>
+                           羊群效应（herd behavior）；用户的决定可能被从其他用户获得信息影响[<a target="_blank" href = "./papers/s__Herd Behaviour and Cascading in Capital Markets--a review and synthesis.pdf">19</a>,40]。
+                        </li>
+                        <li>
+                           很多研究表明，社交影响在group commerce和social commerce中有很重要的作用。
+                        </li>
+                        <li>
+                           [27]当一个人适应了它的行为，态度和在社交系统中对其他人的信任，社交影响就起作用了。
+                        </li>
+                        <li>
+                           <a target="_blank" href = "./papers/s__WE-COMMERCE EVIDENCE ON A NEW VIRTUAL COMMERCE PLATFORM.pdf">[22]</a>社交影响理论一般指的是已经被认为是跟随或同意可见的多数的相对简单的行为。
+                        </li>
+                        <li>
+                           [15]一些研究表明，影响不是必须的面对面的影响，而是基于别人的信息而产生的影响。
+                        </li>
+                     </ul>
+                  </p>
+               </div>
+            </div>
+         </div>
+
+      <!-- [7]Evaluating User Community Influence in Online Social Network -->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper7">
+                     <span class = "papername">[7] Evaluating User Community Influence in Online Social Network</span> [C] Xiong Z, Jiang W, Wang G. TrustCom 2012 
+                     <a target="_blank" href="./papers/IEEE_TrustCom12_Evaluating User Community Influence in Online social Network.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper7" class="panel-collapse collapse in">
+               <div class="panel-body">
+                  <h4><b>总体思想：</b></h4>
+                  <p>
+                     文章基于一种Pagerank算法，计算User在community中的影响力，并在此模型中，选取此算法得出的Top-k最大影响力的用户，得到的影响范围最广。
+                  </p>
+                  <h4><b>关键点：</b></h4>
+                  <p>
+                     目的：发现在线社交网络中用户在社区的中影响力。<br>
+                     定义了“community label”这个概念。<br>
+                     衡量用户的三个量：1、用户的好友数；2、用户好友质量；3、用户的community label。<br>
+                  </p>
+               </div>
+            </div>
+         </div>
+
+
+      <!-- 其他想法 -->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#others">
+                     <span class = "papername"><a target="_blank" href = "./others.html">其他</a></span>
+                  </a>
+               </h4>
+            </div>
+         </div>
+
+      <!-- 可复制文本
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper3">
+                     <span class = "papername">[3] Community Level Diffusion Extraction</span> [C] Hu Z, Yao J, Cui B, et al. ACM SIGMOD 2015 
+                     <a target="_blank" href="./papers/PAKDD15_Understanding Community Effects on information diffusion.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper3" class="panel-collapse collapse in">
+               <div class="panel-body">
+                  <li>概要：xxxxxxxxxxxxxxxxxxxxxxx</li>
+               </div>
+            </div>
+         </div>
+         -->
+
+      </div><!-- panel-group End -->
+   </section>
+   </div><!-- container End -->
+   </div><!-- content-wrapper End -->
+   <footer class="main-footer">
+     <div class="container">
+       <div class="pull-right hidden-xs">
+         <b>Version</b> 2.0
+       </div>
+       <strong>Copyright &copy; 2015-2016 <a href="#">...</a>.</strong> All rights reserved.
+     </div><!-- /.container -->
+   </footer>
+   </div><!-- wrapper End -->
+<script type="text/javascript">
+//   $(function () { 
+ //     $('#collapseexample').on('show.bs.collapse', function () {
+         
+//   });
+</script>
+<script src="./plugins/bootstrap/js/app.min.js"></script>
+</body>
+</html>

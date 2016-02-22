@@ -1,0 +1,11 @@
+/*论文名字样式*/
+.papername{
+	width:200px;
+	font-weight: bold;
+	overflow:hidden;
+}
+
+/*会议样式*/
+.conference{
+
+}
