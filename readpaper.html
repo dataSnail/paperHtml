@@ -252,7 +252,6 @@
             </div>
          </div>
 
-
       <!-- 论文 [6] A social recommender mechanism ofr location-based group commerce -->
          <div class="panel panel-info">
             <div class="panel-heading">
@@ -342,7 +341,7 @@
                   </a>
                </h4>
             </div>
-            <div id="paper7" class="panel-collapse collapse in">
+            <div id="paper7" class="panel-collapse collapse">
                <div class="panel-body">
                   <h4><b>总体思想：</b></h4>
                   <p>
@@ -358,6 +357,96 @@
             </div>
          </div>
 
+      <!-- [8]Evaluating User Community Influence in Online Social Network -->
+      <div class="panel panel-info">
+         <div class="panel-heading">
+            <h4 class="panel-title">
+               <a data-toggle="collapse" data-parent="#accordion" 
+                  href="#paper8">
+                  <span class = "papername">[8] 社交网络社区影响力评估算法</span> , 张波，发明专利, 专利受理号：201410740284.8
+                  <a target="_blank" href="./papers/社交网络影响力分析专利.pdf">pdf</a>
+               </a>
+            </h4>
+         </div>
+         <div id="paper8" class="panel-collapse collapse">
+            <div class="panel-body">
+               <h4><b>社区影响力评估方面：</b></h4>
+               <p>
+                  <ol>
+                     <li>定义社交网络与社区影响力相关的概念及建模；</li>
+                     <li>计算出用户传播主题信息的意愿、社区用户综合影响、社区用户数量、社区用户规模、再综合计算出舍与影响力；
+                        <ul>
+                           <li>用户传播主题的意愿：统计形成用户平均传播意愿，用接收的信息数量和传播的信息数量之比统计。</li>
+                           <li>社区用户综合影响：描述社区内所有用户的综合的影响力，每个用户影响社区内的用户和影响社区外用户的总和。</li>
+                           <li>社区用户数量：社区内用户的数量`NU`。</li>
+                           <li>社区用户规模：用户间的关系，通过用户的初度来确定，社区用户规模，其计算方法 `US(C_i)=\sum_{u\inI(u)}outdegree(u)`。</li>
+                        </ul>
+                     </li>
+                     <li>计算出社区对社区内节点的影响力、社区对社区外节点的影响力、社区对社区的影响力；
+                        <ul>
+                           <li>社区的影响力：`CI(C_i)=M*UII(C_i)+N*NU+(1-M-N)*US(C_i)`</li>
+                           <li>社区对社区内节点的影响力：`ICNI(h)=\sum_{u\in(I(u)-{h})}(AP(u)*\sum_{s\inS(u),g\ing(u)}i nflu)`</li>
+                        </ul>
+                     </li>
+                     <li>将计算出的社区影响力、社区对社区内节点的影响力、社区对社区外节点的影响力、社区对社区的影响力，用于评估各社区建的影响力、节点对社区的重要性以及社区对节点的作用；</li>
+                  </ol>
+               </p>
+               <h4><b>概念定义：（引自原文）</b></h4>
+               <p>
+                  <ol>
+                     <li><b>用户影响力：</b>每个用户在其所在的社区内存在一定的影响力，而用户的影响力是通过用户发布的信息影响的人数来衡量的，用户发布的信息影响的人数即转发或者分享该信息的总人数，用户发布的信息，不仅会影响到社区内的用户，还会影响到社区外的用户，UI的取值在0~1之间，值越大，表示用户的影响力越大。</li>
+                     <li><b>社区影响力：</b>当兴趣爱好相同的人聚集形成社区时，社区会形成一定的影响力，社区影响力是对社区内用户影响力的综合。</li>
+                     <li><b>社区影响力的评估：</b>根据给出的社区模型以及与它相关的社交网络的信息来评估社区的影响力，社区影响力评估算法表示为：`CI(C_i)=f(G,C_i)`,`CI(C_i)`表示社区`C_i`的影响力，`f(F,C_i)`表示该模型是基于`G`和`C_i`的.</li>
+                  </ol>
+               </p>
+
+            </div>
+         </div>
+      </div>
+      <!-- 一些问题-->
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#paper_questions">
+                     <span class = "papername">一些问题的思考：</span>
+                     <a target="_blank" href="./papers/PAKDD15_Understanding Community Effects on information diffusion.pdf">pdf</a>
+                  </a>
+               </h4>
+            </div>
+            <div id="paper_questions" class="panel-collapse collapse in">
+               <div class="panel-body">
+                  <h4><b>2016-03-02问题整理：</b></h4>
+                  <p>
+                     在群体层面上探究问题，在群体层面上描述。<br>
+                     群体动力学家肖(Shaw,1981)认为所有的群体都有一个共同点：群体成员存在互动。因此他把群体（group）定义为两个或者更多互动并且相互影响的人。在社会心理学中，有三种有关集体影响的实例：社会助长作用、社会懈怠和去个性化。
+                     <ol>
+                        <li>建模问题：（网络图的建立）</li>
+                           <ul>
+                              <li>节点和节点之间的好友关系。</li>
+                              <li>节点和节点之间的交互关系。</li>
+                              <li>结合以上两者，在同一张图里也可以，划分为两张图也可以（异构）。</li>
+                           </ul>
+                        <li>实际应用问题：（应该研究一个什么样的具体问题？）</li>
+                        <!--
+                           <ul>
+                              <li>题目出发：</li>
+                               <ul><b>一、基于群体与个体关系的社交网络演化分析与预测</b>
+                                  <li></li>
+                               </ul>
+                               <ul><b>二、社交网络中基于群体影响力的群体和个体行为分析与预测</b>
+                                  <li>2</li>
+                               </ul>
+                               <ul><b>三、社交网络中基于群体影响力的群体和个体行为分析与预测</b>
+                                  <li>2</li>
+                               </ul>                           
+                           </ul>
+                        -->
+                     </ol>
+                  </p>
+               </div>
+            </div>
+         </div>
 
       <!-- 其他想法 -->
          <div class="panel panel-info">
